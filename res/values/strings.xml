@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TabMediaPlayer</string>
+    <string name="exit_menu_button">Exit TabPlayer</string>
+    <string name="playlist_menu_button">Playlist</string>
+    <string name="repeat_menu_button">Toggle Repeat</string>
+    <string name="shuffle_menu_button">Toggle Shuffle</string>
+
+</resources>

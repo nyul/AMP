@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_repeat"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/repeat_menu_button"/>
+    <item
+        android:id="@+id/menu_shuffle"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/shuffle_menu_button"/>
+    <item
+        android:id="@+id/menu_playlist"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/playlist_menu_button"/>
+    <item
+        android:id="@+id/menu_exit"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/exit_menu_button"/>
+
+</menu>

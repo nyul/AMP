@@ -28,7 +28,16 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -204,6 +213,56 @@ public class MediaPlayerActivity extends Activity implements
 
 			@Override
 			public void onClick(View arg0) {
+				LinearLayout llayout = (LinearLayout) findViewById(R.id.songThumbnail);
+				AnimationSet anim = new AnimationSet(false);
+				
+				RotateAnimation rot1 = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+	            rot1.setDuration(2000); //You can manage the time of the blink with this parameter
+	            rot1.setRepeatMode(Animation.RESTART);
+	            rot1.setRepeatCount(Animation.INFINITE);
+	            rot1.setInterpolator(new LinearInterpolator());
+	            
+				RotateAnimation rot2 = new RotateAnimation(0, 360, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
+	            rot2.setDuration(2000); //You can manage the time of the blink with this parameter
+	            rot2.setRepeatMode(Animation.RESTART);
+	            rot2.setRepeatCount(Animation.INFINITE);
+	            rot2.setInterpolator(new LinearInterpolator());
+	            
+	            
+	            Animation alpha1  = new AlphaAnimation(0.2f, 0.8f);
+	            alpha1.setDuration(1000); //You can manage the time of the blink with this parameter
+	            alpha1.setRepeatMode(Animation.REVERSE);
+	            alpha1.setRepeatCount(Animation.INFINITE);
+	            
+//	            AlphaAnimation alpha2  = new AlphaAnimation(0.0f, 1.0f);
+//	            alpha2.setDuration(1000); //You can manage the time of the blink with this parameter
+//	            alpha2.setStartOffset(1000);
+//	            alpha2.setRepeatMode(Animation.);
+//	            alpha2.setRepeatCount(Animation.INFINITE);
+	            
+	            ScaleAnimation sc1 = new ScaleAnimation(0.8f, 1.2f, 0.8f, 0.55f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+	            sc1.setDuration(1000);
+	            sc1.setRepeatMode(Animation.REVERSE);
+	            sc1.setRepeatCount(Animation.INFINITE);
+	            
+//	            ScaleAnimation sc2 = new ScaleAnimation(1.5f, 1.0f, 0.75f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+//	            sc2.setDuration(1000);
+//	            sc2.setStartOffset(1000);
+//	            sc2.setRepeatMode(Animation.RESTART);
+//	            sc2.setRepeatCount(Animation.INFINITE);
+	            
+	            anim.addAnimation(alpha1);
+//	            anim.addAnimation(alpha2);
+	            anim.addAnimation(rot1);
+	            anim.addAnimation(rot2);
+	            anim.addAnimation(sc1);
+//	            anim.addAnimation(sc2);
+	            
+				ImageView img = (ImageView)llayout.getChildAt(0);
+				
+				img.startAnimation(anim);
+				img.setAlpha(1.0f);
+				
 				// check for already playing
 				if (mp.isPlaying()) {
 					System.out.println("playing");
